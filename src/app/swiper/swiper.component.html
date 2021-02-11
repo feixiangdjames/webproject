@@ -1,0 +1,31 @@
+<swiper
+  [slidesPerView]="1"
+  [loop]="true"
+  [speed]="1500"
+  effect="cube"
+  (swiper)="onSwiper($event)"
+  (slideChange)="onSlideChange()"
+  [navigation]="true"
+  [autoplay]="{delay: 3000,disableOnInteraction: true}"
+>
+  <ng-template swiperSlide >
+    <div class="imgBox" routerLink="/detail">
+      <img  src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    </div>
+
+  </ng-template>
+  <ng-template swiperSlide>
+    <div class="imgBox" routerLink="/detail">
+      <img  src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    </div>
+
+  </ng-template>
+  <ng-template swiperSlide>
+    <div class="imgBox" routerLink="/detail">
+      <img  src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    </div>
+
+  </ng-template>
+</swiper>
+
+<!-- (swiper)="onSwiper($event)"-->

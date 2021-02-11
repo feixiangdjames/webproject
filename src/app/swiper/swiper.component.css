@@ -1,0 +1,14 @@
+swiper{
+  width: 80%;
+  height: 35vh;
+  display: block;
+  background-color: lightgreen;
+  overflow: hidden;
+}
+.imgBox{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+

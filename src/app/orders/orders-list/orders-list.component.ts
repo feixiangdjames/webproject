@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
-import {FlatTreeControl} from "@angular/cdk/tree";
-import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
+import { Component, OnInit } from '@angular/core';
 
+//mat
+import {FlatTreeControl} from '@angular/cdk/tree';
+import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+/**
+ * Food data with nested structure.
+ * Each node has a name and an optional list of children.
+ */
 interface FoodNode {
   name: string;
   children?: FoodNode[];
 }
+
 const TREE_DATA: FoodNode[] = [
   {
     name: 'Fruit',
@@ -33,19 +39,23 @@ const TREE_DATA: FoodNode[] = [
     ]
   },
 ];
-
+/** Flat node with expandable and level information */
 interface ExampleFlatNode {
   expandable: boolean;
   name: string;
   level: number;
 }
-@Component({
-  selector: 'app-root',
-  templateUrl:'./app.component.html',
-  styleUrls: ['./app.component.css']
-})
 
-export class AppComponent {
+/**
+ * @title Tree with flat nodes
+ */
+@Component({
+  selector: 'app-orders-list',
+  templateUrl: './orders-list.component.html',
+  styleUrls: ['./orders-list.component.css']
+})
+export class OrdersListComponent implements OnInit {
+  options:string[]=['from low to high','from high to low'];
   private _transformer = (node: FoodNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
@@ -53,6 +63,7 @@ export class AppComponent {
       level: level,
     };
   }
+
   treeControl = new FlatTreeControl<ExampleFlatNode>(
     node => node.level, node => node.expandable);
 
@@ -60,11 +71,13 @@ export class AppComponent {
     this._transformer, node => node.level, node => node.expandable, node => node.children);
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-  title = 'my-app';
-  value = '';
-  categoryList:string[]=['category-A','category-B','category-C'];
+
   constructor() {
     this.dataSource.data = TREE_DATA;
   }
+
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+
+  ngOnInit(): void {
+  }
 }
