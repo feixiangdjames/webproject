@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { OrdersRoutingModule } from './orders-routing.module';
-import { OrdersListComponent } from './orders-list/orders-list.component';
+import { ProductRoutingModule } from './product-routing.module';
+import { ProductListComponent } from './product-list/product-list.component';
 //material
 import {MatCardModule} from '@angular/material/card';
 import {MatTreeModule} from '@angular/material/tree';
@@ -13,10 +13,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 @NgModule({
-  declarations: [OrdersListComponent],
+  declarations: [ProductListComponent],
   imports: [
     CommonModule,
-    OrdersRoutingModule,
+    ProductRoutingModule,
     MatCardModule,
     MatIconModule,
     MatSidenavModule,
@@ -26,4 +26,4 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDividerModule
   ]
 })
-export class OrdersModule { }
+export class ProductModule { }

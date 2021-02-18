@@ -6,11 +6,11 @@
 
     <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
     <div>
-      <button  mat-button *ngFor="let category of categoryList" routerLink="/orders">
+      <button  mat-button *ngFor="let category of categoryList" routerLink="/product">
         {{category}}</button></div>
     <div class="search">
       <input matInput type="search"  [(ngModel)]="value">
-      <button mat-button routerLink="/orders">
+      <button mat-button routerLink="/product">
         <mat-icon>search</mat-icon>
       </button>
     </div>
@@ -27,18 +27,3 @@
 <div class="container">
   <router-outlet></router-outlet>
 </div>
-<div class="footer">
-  <div><span>
-  contact
-</span>
-    <p></p></div>
-  <div><span>
-  copyright
-</span>
-    <p></p></div>
-  <div>
-    <span>
-  read me
-</span>
-    <p></p>
-  </div>

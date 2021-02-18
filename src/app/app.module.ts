@@ -16,7 +16,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 
-import {MessagesListComponent} from './messages/messages-list/messages-list.component'
+import {HomeListComponent} from './home/home-list/home-list.component'
 
 
 @NgModule({

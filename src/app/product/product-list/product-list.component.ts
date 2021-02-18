@@ -52,10 +52,10 @@ interface detailCard {
  */
 @Component({
   selector: 'app-orders-list',
-  templateUrl: './orders-list.component.html',
-  styleUrls: ['./orders-list.component.css']
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
 })
-export class OrdersListComponent implements OnInit {
+export class ProductListComponent implements OnInit {
   options:string[]=['from low to high','from high to low'];
   details:detailCard[]=[
     {

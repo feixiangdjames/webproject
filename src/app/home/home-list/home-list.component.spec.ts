@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MessagesListComponent } from './messages-list.component';
+import { HomeListComponent } from './home-list.component';
 
 describe('MessagesListComponent', () => {
-  let component: MessagesListComponent;
-  let fixture: ComponentFixture<MessagesListComponent>;
+  let component: HomeListComponent;
+  let fixture: ComponentFixture<HomeListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MessagesListComponent ]
+      declarations: [ HomeListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MessagesListComponent);
+    fixture = TestBed.createComponent(HomeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
