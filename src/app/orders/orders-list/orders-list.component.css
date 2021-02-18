@@ -9,11 +9,12 @@
   min-width: 200px;
 }
 .mat-drawer-content{
-  display: grid;
-  grid-template: auto / 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-flow: row wrap;
 }
 .example-card {
- min-width: 200px;
+  min-width: 200px;
+  width: 200px;
   margin: 30px;
 }
 
@@ -22,7 +23,9 @@
   background-size: cover;
 }
 .option{
-  margin-left: 90%;
+  margin-left: 200px;
+  margin-right: 90%;
+  margin-top:20px
 }
 .mat-drawer-container .mat-form-field{
   width: 50px;
@@ -48,5 +51,8 @@
 .rate-mini{
   display: flex;
   flex-flow: row nowrap;
-   margin: 10px 0;
+  margin: 10px 0;
+}
+mat-card-content .price *{
+  display: inline-block;
 }

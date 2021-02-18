@@ -40,10 +40,11 @@ const TREE_DATA: FoodNode[] = [
   },
 ];
 /** Flat node with expandable and level information */
-interface ExampleFlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
+interface detailCard {
+  title: string;
+  price:number;
+  commit: string;
+  imgUrl:string;
 }
 
 /**
@@ -56,27 +57,31 @@ interface ExampleFlatNode {
 })
 export class OrdersListComponent implements OnInit {
   options:string[]=['from low to high','from high to low'];
-  private _transformer = (node: FoodNode, level: number) => {
-    return {
-      expandable: !!node.children && node.children.length > 0,
-      name: node.name,
-      level: level,
-    };
-  }
-
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
-    node => node.level, node => node.expandable);
-
-  treeFlattener = new MatTreeFlattener(
-    this._transformer, node => node.level, node => node.expandable, node => node.children);
-
-  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+  details:detailCard[]=[
+    {
+      title:'title' ,
+      price:20,
+      commit:"commit get",
+      imgUrl:"https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      title:'title' ,
+      price:20,
+      commit:"commit get",
+      imgUrl:"https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      title:'title' ,
+      price:20,
+      commit:"commit get",
+      imgUrl:"https://material.angular.io/assets/img/examples/shiba2.jpg"
+    }
+  ];
 
   constructor() {
-    this.dataSource.data = TREE_DATA;
+
   }
 
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
   ngOnInit(): void {
   }

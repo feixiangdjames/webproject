@@ -1,12 +1,11 @@
 <swiper
   [slidesPerView]="1"
   [loop]="true"
-  [speed]="1500"
-  effect="cube"
+  [speed]="1000"
   (swiper)="onSwiper($event)"
   (slideChange)="onSlideChange()"
   [navigation]="true"
-  [autoplay]="{delay: 3000,disableOnInteraction: true}"
+  [autoplay]="{delay: 5000,disableOnInteraction: true}"
 >
   <ng-template swiperSlide >
     <div class="imgBox" routerLink="/detail">
