@@ -1,88 +1,98 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute,NavigationExtras,Router} from "@angular/router";
+import {ApiService} from '../../api.service';
+//@ts-ignore
+import  * as alldata from '../../../assets/pets.json';
 
-//mat
-import {FlatTreeControl} from '@angular/cdk/tree';
-import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
-/**
- * Food data with nested structure.
- * Each node has a name and an optional list of children.
- */
-interface FoodNode {
-  name: string;
-  children?: FoodNode[];
+interface grade{
+  name:string;
+  black:boolean;
 }
-
-const TREE_DATA: FoodNode[] = [
-  {
-    name: 'Fruit',
-    children: [
-      {name: 'Apple'},
-      {name: 'Banana'},
-      {name: 'Fruit loops'},
-    ]
-  }, {
-    name: 'Vegetables',
-    children: [
-      {
-        name: 'Green',
-        children: [
-          {name: 'Broccoli'},
-          {name: 'Brussels sprouts'},
-        ]
-      }, {
-        name: 'Orange',
-        children: [
-          {name: 'Pumpkins'},
-          {name: 'Carrots'},
-        ]
-      },
-    ]
-  },
-];
-/** Flat node with expandable and level information */
-interface detailCard {
+interface detailCard{
+  id:number;
   title: string;
   price:number;
+  category:string;
   commit: string;
   imgUrl:string;
-}
+  rate:grade[];
+};
 
-/**
- * @title Tree with flat nodes
- */
 @Component({
   selector: 'app-orders-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
+
 export class ProductListComponent implements OnInit {
+
   options:string[]=['from low to high','from high to low'];
-  details:detailCard[]=[
-    {
-      title:'title' ,
-      price:20,
-      commit:"commit get",
-      imgUrl:"https://material.angular.io/assets/img/examples/shiba2.jpg"
-    },
-    {
-      title:'title' ,
-      price:20,
-      commit:"commit get",
-      imgUrl:"https://material.angular.io/assets/img/examples/shiba2.jpg"
-    },
-    {
-      title:'title' ,
-      price:20,
-      commit:"commit get",
-      imgUrl:"https://material.angular.io/assets/img/examples/shiba2.jpg"
+
+  allDetails:detailCard[]=[];
+
+  details: detailCard[]=[];
+
+  keepDetails:any[]=[];
+
+  constructor(private route: ActivatedRoute,
+              private apiService:ApiService) {
+    this.allDetails=alldata.default;
+  }
+
+  sort():void{
+    const obj:HTMLBaseElement|null=document.querySelector('#select');
+    //met a bug
+    setTimeout(()=>{
+      if(obj&&obj.textContent){
+      let order=this.options.indexOf(obj.textContent)===0?1:-1;
+      if(this.details){
+      this.details.sort((a:detailCard,b:detailCard)=>(a.price-b.price)*order)}
+      }
+    },0);
+  }
+
+
+   priceFilter(...arg:string[]):void{
+      this.details=this.keepDetails.filter((item:any):boolean=>{
+      let max=!arg[1]?1<<20:arg[1];
+      let min=!arg[0]?0:arg[0];
+      return item['price']>=min && item['price']<=max;
     }
-  ];
+  )
+}
 
-  constructor() {
+
+
+  rateFilter(option:number):void{
+    //@ts-ignore
+    this.details=this.keepDetails.filter(item=>{
+      const oneRateNum:[]=item['rate'].filter((item: { black: any;})=>
+      {return !item.black})
+      //return the prodect who rateStar number greater than option.
+      return oneRateNum.length>=option
+      }
+    )
 
   }
 
-
-  ngOnInit(): void {
+  myFilter(option:string,data:string):void{
+    this.keepDetails=this.details=this.allDetails.filter(item=>{
+      //@ts-ignore
+      return item[option].search(data)>-1
+    })
   }
+
+  ngOnInit():void {
+
+    //subsecribe the router params
+    this.route.params.subscribe(params =>
+    {
+      console.log(params);
+      const searchData:string=params['id'];
+      searchData[0]==="?"
+        ?this.myFilter('title',searchData.substr(1))
+        :this.myFilter('category',searchData)
+     })
+  }
+
 }

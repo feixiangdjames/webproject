@@ -5,13 +5,15 @@
     <span style="font-family: cursive;">Puppies</span>
 
     <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
+
     <div>
-      <button  mat-button *ngFor="let category of categoryList" routerLink="/product">
-        {{category}}</button></div>
+      <button  mat-button *ngFor="let category of categoryList" [routerLink]="['/product',category]">
+        {{category}}</button>
+    </div>
     <div class="search">
-      <input matInput type="search"  [(ngModel)]="value">
-      <button mat-button routerLink="/product">
-        <mat-icon>search</mat-icon>
+        <input matInput type="search"  [(ngModel)]="value">
+      <button mat-button  [routerLink]="['/product','?'+value]" (click)="reload()" color="warn">
+        <mat-icon color="primary">search</mat-icon>
       </button>
     </div>
     <button mat-button>
@@ -22,8 +24,20 @@
     </button>
 
   </mat-toolbar-row>
-
 </mat-toolbar>
+
 <div class="container">
   <router-outlet></router-outlet>
+</div>
+
+<div class="footer">
+  <p>
+    contact
+  </p>
+  <p>
+   copy right
+  </p>
+  <p>
+    info
+  </p>
 </div>

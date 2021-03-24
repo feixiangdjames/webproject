@@ -1,9 +1,8 @@
-
 <div class="container">
   <div class="option">
     <mat-form-field appearance="fill">
       <mat-label>sort</mat-label>
-      <mat-select>
+      <mat-select id="select" (selectionChange)="sort()">
         <mat-option *ngFor="let option of options" [value]="option">
           {{option}}
         </mat-option>
@@ -16,13 +15,13 @@
         <h2>Price</h2>
       <mat-form-field>
         <mat-label matPrefix>$</mat-label>
-        <input matInput  type="text">
+        <input #priceMin matInput  type="text">
       </mat-form-field>
       <mat-form-field>
         <mat-label matPrefix>$</mat-label>
-        <input matInput type="text">
+        <input #priceMax matInput type="text">
       </mat-form-field>
-      <button mat-mini-fab color="accent">
+      <button mat-mini-fab color="accent" (click)="priceFilter(priceMin.value,priceMax.value)">
         <mat-icon>check</mat-icon>
       </button>
     </div>
@@ -36,7 +35,7 @@
          <mat-icon>grade</mat-icon>
          <mat-icon>grade</mat-icon>
        </div>
-          <button>up</button>
+          <button (click)="rateFilter(5)">up</button>
         </div>
         <div class="rate-mini" style="color: darkorange">
           <div>
@@ -46,7 +45,7 @@
             <mat-icon>grade</mat-icon>
             <mat-icon style="color: #e6ebf1">grade</mat-icon>
           </div>
-          <button>up</button>
+          <button (click)="rateFilter(4)">up</button>
         </div>
         <div class="rate-mini" style="color: darkorange">
           <div>
@@ -56,36 +55,29 @@
             <mat-icon style="color: #e6ebf1">grade</mat-icon>
             <mat-icon style="color: #e6ebf1">grade</mat-icon>
           </div>
-          <button>up</button>
+          <button (click)="rateFilter(3)">up</button>
         </div>
       </div>
     </mat-drawer>
+    <!--this is dog list-->
     <mat-drawer-content>
-
-      <mat-card routerLink="/detail" *ngFor="let detail of details" class="example-card"  >
+      <mat-card [routerLink]="['/detail',detail.id]" *ngFor="let detail of details" class="example-card"  >
         <mat-card-header>
           <mat-card-title>{{detail.title}}</mat-card-title>
+          <mat-card-subtitle>{{detail.category}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="{{detail.imgUrl}}" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <div class="price"><p>price:</p><h2>${{detail.price}}</h2></div>
-          <div class="card-rate" style="color: darkorange">
-            <div>
-              <mat-icon>grade</mat-icon>
-              <mat-icon>grade</mat-icon>
-              <mat-icon>grade</mat-icon>
-              <mat-icon>grade</mat-icon>
-              <mat-icon style="color: #e6ebf1">grade</mat-icon>
+          <div class="rate-mini">
+            <div *ngFor="let rate of detail.rate">
+               <mat-icon [ngStyle]="{'color': rate.black ? '#e6ebf1':'darkorange'}">{{rate.name}}</mat-icon>
             </div>
           </div>
         </mat-card-content>
-     <!--   <mat-card-actions>
-          <button mat-flat-button color="accent">buy</button>
-        </mat-card-actions>-->
       </mat-card>
     </mat-drawer-content>
-
   </mat-drawer-container>
-</div>
+</div>'
 
 

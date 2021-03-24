@@ -1,27 +1,24 @@
 <div class="title">
   <div>
-    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
+    <img src="{{detail.imgUrl}}" alt="">
   </div>
   <div class="content">
-    <p>Dogi</p>
-    <div class="rate-mini" style="color: darkorange">
-      <div>
-        <mat-icon>grade</mat-icon>
-        <mat-icon>grade</mat-icon>
-        <mat-icon>grade</mat-icon>
-        <mat-icon>grade</mat-icon>
-        <mat-icon style="color: #e6ebf1">grade</mat-icon>
+    <p style="font-weight: bold">{{detail.title}}</p>
+    <p style="font-size: small">{{detail.category}}</p>
+    <div class="rate-mini">
+      <div *ngFor="let rate of detail.rate">
+        <mat-icon [ngStyle]="{'color': rate.black ? '#e6ebf1':'darkorange'}">{{rate.name}}</mat-icon>
       </div>
     </div>
     <mat-divider></mat-divider>
-    <p class="price">PRICE: $ 888.00</p>
+    <p class="price">PRICE: $ {{detail.price}}</p>
   <div class="number">
     Number:
     <button mat-mini-fab  color="accent">
-      <mat-icon>remove</mat-icon>
+      <mat-icon (click)="remove()">remove</mat-icon>
     </button>
-    <input type="text" value="1">
-    <button mat-mini-fab color="accent">
+    <input type="text" value="{{num}}">
+    <button mat-mini-fab color="accent" (click)="add()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -32,10 +29,10 @@
     <mat-divider></mat-divider>
     <div class="spec">
       <p>
-        North Spore's Immunity Blend tincture is made from mushroom fruiting body extracts, rather than mycelium grown on grain, for maximum health benefits.
+        The dog was the first species to be domesticated by hunter–gatherers more than 15,000 years ago, which predates agriculture. Their long association with humans has led dogs to be uniquely attuned to human behavior and they can thrive on a starch-rich diet that would be inadequate for other canids.
       </p>
       <p>
-        The Immunity Blend tincture consists of the following four mushrooms, all with immune system boosting qualities: Chaga (Inonotus obliquus), Reishi (Ganoderma tsugae), Shiitake (Lentinula edodes), and Hen of the Woods (Grifola frondosa).
+        The dog has been selectively bred over millennia for various behaviors, sensory capabilities and physical attributes.[16] Dogs vary widely in shape, size and color
       </p>
     </div>
   </div>

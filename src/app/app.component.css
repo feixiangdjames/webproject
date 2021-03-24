@@ -4,12 +4,9 @@
 
 }
 
-
 container{
   margin-top: 0;
-
 }
-
 
 .mat-toolbar-row.first-row{
   box-shadow: 0 2px 5px #000;
@@ -33,23 +30,20 @@ container{
   display: flex;
   flex-flow: row;
   margin:auto;
-}
-
-.search input{
-  font-size: large;
+  background-color: white;
   border: white solid 5px ;
   border-radius:5px;
-  line-height: 100%;
-  background-color: white;
+  width: 50%;
+}
+.search input{
+  font-size: large;
   color: #24292e;
-  width: 100%;
+  overflow: hidden;
 }
 .mat-icon {
   transform: scale(1.5);
 }
 .footer {
-
-
   height:200px;
   background-color:#303030;
   width:100%;
@@ -57,14 +51,9 @@ container{
   flex-flow:row wrap;
   justify-content: center;
 
-
 }
-.footer div{
+.footer p{
   color:wheat;
   font-size: 20px;
-  width:20%;
   margin:30px;
-  display:flex;
-  flex-flow:column nowrap;
-  align-items: center;
 }

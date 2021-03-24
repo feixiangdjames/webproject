@@ -8,11 +8,13 @@ const routes: Routes = [
     path:'',
     component:ProductListComponent
   },
-  {path:'detail',loadChildren:()=>import('../detail/detail.module').then(m=>m.DetailModule)}
+  {path:'detail/:id',loadChildren:()=>import('../detail/detail.module').then(m=>m.DetailModule)}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProductRoutingModule { }
+export class ProductRoutingModule {
+
+}
