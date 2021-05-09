@@ -12,12 +12,14 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatInputModule} from '@angular/material/input';
 import {MatTreeModule} from '@angular/material/tree';
-
+import {MatSelectModule} from "@angular/material/select";
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 
 import {HomeListComponent} from './home/home-list/home-list.component'
-
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,16 @@ import {HomeListComponent} from './home/home-list/home-list.component'
     MatMenuModule,
     MatInputModule,
     MatTreeModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    //translate
+    TranslateModule.forRoot({
+      loader:{
+        provide:TranslateLoader,
+        useFactory:TranslateHttpLoader,
+        deps:[HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap:[AppComponent]

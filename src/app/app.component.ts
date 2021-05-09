@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
+import {TranslateService} from "@ngx-translate/core";
 /*interface FoodNode {
   name: string;
   children?: FoodNode[];
@@ -43,14 +44,18 @@ interface ExampleFlatNode {
   templateUrl:'./app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'my-app';
   value = '';
+  lang ='fr'
   categoryList:string[]=['category-A','category-B','category-C'];
-  constructor() {
+  constructor(){
 
   }
   reload():void{
     this.value='';
+  }
+  ngOnInit():void{
+
   }
 }

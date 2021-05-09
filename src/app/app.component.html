@@ -1,21 +1,24 @@
 <mat-toolbar color="primary">
-
   <mat-toolbar-row class="first-row">
     <img src="./assets/servlet.png"/>
     <span style="font-family: cursive;">Puppies</span>
-
     <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
-
     <div>
       <button  mat-button *ngFor="let category of categoryList" [routerLink]="['/product',category]">
         {{category}}</button>
     </div>
     <div class="search">
-        <input matInput type="search"  [(ngModel)]="value">
+        <input matInput type="search" [(ngModel)]="value">
       <button mat-button  [routerLink]="['/product','?'+value]" (click)="reload()" color="warn">
         <mat-icon color="primary">search</mat-icon>
       </button>
     </div>
+ <!--   <div>
+      <mat-select [(ngModel)]="lang">
+        <mat-option value="fr">fr</mat-option>
+        <mat-option value="en">en</mat-option>
+      </mat-select>
+    </div>-->
     <button mat-button>
       <mat-icon>person</mat-icon>
     </button>

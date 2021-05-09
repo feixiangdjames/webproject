@@ -45,6 +45,7 @@
 .example-card{
   transform:scale(1,1);transition: all .1s ease-out;
 }
+
 .example-card:hover{
   background: yellowgreen;
   transform:scale(1.1,1.1);
